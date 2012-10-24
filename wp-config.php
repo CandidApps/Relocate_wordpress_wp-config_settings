@@ -64,7 +64,8 @@ if ( !defined('ABSPATH') ) {
           $wp_config_settings_file = NON_WEB_DIR.$filename;
 
           if (file_exists($wp_config_settings_file)) {
-              require_once($wp_config_settings_file);
+              global $table_prefix; // makes the value of $table_prefix accessible to this function	
+              require_once($wp_config_settings_file); //loads the wp config settings
              }
           else {
                  $error_message = "<br />The file containing the configuration settings usually found in wp_config.php cannot be found <br />" .

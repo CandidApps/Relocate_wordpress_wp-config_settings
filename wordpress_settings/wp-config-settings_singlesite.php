@@ -85,5 +85,11 @@ define('WP_DEBUG', false);
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
+/**commented out the require_once code BELOW to prevent
+*  Fatal error: Call to a member function flush_rules() on a non-object
+*--------------------------------------------------*/
+
 /** Sets up WordPress vars and included files. */
 //require_once(ABSPATH . 'wp-settings.php');
+
+/**-------------------------------------------------*/

@@ -1,7 +1,8 @@
-<?
+<?php
 
 
-/**Required: PHP Version above 5.3.0
+/*
+ *Required: PHP Version above 5.3.0
  * Required: Wordpress Version above 2.6
  * Author: Moya Richards
  * Description: This is a partial wp_config file
@@ -32,7 +33,8 @@ WHY I CREATED THIS FILE:
  *----  Hosting company's such as GODADDY allows users to create
  *----  a non-web accessible root folder by using a false domain name ( http://support.godaddy.com/help/article/4067?pc_split_value=2 )
  *----  You can then organize all your subdomains into the same folder; instructions here: ( http://www.kennycarlile.com/2010/03/23/godaddy-shared-hosting-multiple-domain-and-subdomain-management )
------------------------------------------------------------------------------*/
+-----------------------------------------------------------------------------
+*/
 
 if ( !defined('ABSPATH') ) {
 	//checks for ABSPATH - ensures script does not run outside of wordpress
@@ -46,7 +48,7 @@ if ( !defined('ABSPATH') ) {
        die();
   }
 
- define("NON_WEB_DIR", "/xampp/wp_config/wordpress_settings/");//this folder contains the files with the settings usually found in wp_config.php
+ define("NON_WEB_DIR", "/xampp/wordpress_settings/");//this folder contains the files with the settings usually found in wp_config.php
  define('FILE_PREFIX','wp-config-settings_');       // filename prefix for the relocated wp_config file.
  define('CURR_WP_DIR_NAME',basename(ABSPATH));      // wordpress installation folder.
 
@@ -56,16 +58,21 @@ if ( !defined('ABSPATH') ) {
    /* This function finds the name of the folder WordPress is installed in. 
     * and links the folder to the correct wp_config settings file
     */
-   function set_config_location($wp_dir_name){
+   function set_config_location($wp_dir_name,$file_name_prefix){
 
           //file containing all the settings usually found in wp_config
-          $filename = FILE_PREFIX.$wp_dir_name.".php";  //  wp-config-settings_foldername.php;
+          $filename = $file_name_prefix.$wp_dir_name.".php";  //  wp-config-settings_foldername.php;
 
           $wp_config_settings_file = NON_WEB_DIR.$filename;
 
           if (file_exists($wp_config_settings_file)) {
+<<<<<<< HEAD
               global $table_prefix; // makes the value of $table_prefix accessible to this function	
               require_once($wp_config_settings_file); //loads the wp config settings
+=======
+              global $table_prefix; // makes the value of $table_prefix accessible to this function
+              require_once($wp_config_settings_file);
+>>>>>>> updated readme
              }
           else {
                  $error_message = "<br />The file containing the configuration settings usually found in wp_config.php cannot be found <br />" .
